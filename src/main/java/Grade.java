@@ -23,4 +23,6 @@ public class Grade {
         this.grade=grade;
         this.subject=subject;
     }
+
+    public Grade(){}
 }
