@@ -1,5 +1,7 @@
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonRootName;
 
+import java.util.ArrayList;
+@JsonRootName(value = "student")
 public class Student {
     String name;
     int age;
