@@ -1,12 +1,16 @@
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.ArrayList;
+@JsonIgnoreProperties
+        //({"student"})
 @JsonRootName(value = "student")
 public class Student {
     String name;
     int age;
     ArrayList<Grade> grades;
     Book book;
+    ArrayList<Hobby> hobby;
 
     public String getName() {
         return name;
@@ -40,13 +44,24 @@ public class Student {
         this.book = book;
     }
 
-    public Student(String name, int age, ArrayList<Grade> grades, Book book){
+    public Student(String name, int age, ArrayList<Grade> grades, Book book, ArrayList<Hobby> hobby){
         this.name = name;
         this.age = age;
         this.grades = grades;
         this.book = book;
+        this.hobby = hobby;
 
     }
 
 
+    public ArrayList<Hobby> getHobby() {
+        return hobby;
+    }
+
+    public void setHobby(ArrayList<Hobby> hobby) {
+        this.hobby = hobby;
+    }
+
+
+    public Student(){}
 }
