@@ -1,6 +1,8 @@
 import com.fasterxml.jackson.databind.*;
+import com.thoughtworks.xstream.XStream;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -27,15 +29,21 @@ public class SerializationAndDeserialization {
         try {
             //wrapping root element student
             mapper.enable(SerializationFeature.WRAP_ROOT_VALUE);
-            //serialization
+            //serialization with Jackson (object to json)
             mapper.writeValue(new File("student.json"), student);
 
             //unwrapping the root element 'student'
             mapper.enable(DeserializationFeature.UNWRAP_ROOT_VALUE);
-            //deserialization
+            //deserialization with Jackson library (json to object)
              Student obj = mapper.readValue(new File("student.json"),Student.class);
             String objPrint = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(obj);
             System.out.println(objPrint);
+
+            //Serialization with Xstream  (object to xml)
+            XStream xstream = new XStream();
+            xstream.toXML(student, new FileWriter("studentxml.xml"));
+
+
         }catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (IOException e) {
