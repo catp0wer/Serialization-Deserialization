@@ -3,7 +3,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 
 import java.util.ArrayList;
 @JsonIgnoreProperties
-        //({"student"})
+//({"student"})
 @JsonRootName(value = "student")
 public class Student {
     String name;
