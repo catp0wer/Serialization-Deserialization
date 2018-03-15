@@ -1,12 +1,8 @@
 import com.fasterxml.jackson.databind.*;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.security.NoTypePermission;
-import com.thoughtworks.xstream.security.NullPermission;
-import com.thoughtworks.xstream.security.PrimitiveTypePermission;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collection;
+
 
 public class SerializationAndDeserialization {
     public static void main(String[] args) {
