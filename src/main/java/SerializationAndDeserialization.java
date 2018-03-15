@@ -1,10 +1,12 @@
 import com.fasterxml.jackson.databind.*;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.security.NoTypePermission;
+import com.thoughtworks.xstream.security.NullPermission;
+import com.thoughtworks.xstream.security.PrimitiveTypePermission;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class SerializationAndDeserialization {
     public static void main(String[] args) {
@@ -25,6 +27,8 @@ public class SerializationAndDeserialization {
 
         Student student = new Student("Cat_p0wer",22,grade_list,book,hobby_list);
         ObjectMapper mapper = new ObjectMapper();
+        XStream xstream = new XStream();
+
 
         try {
             //wrapping root element student
@@ -40,9 +44,11 @@ public class SerializationAndDeserialization {
             System.out.println(objPrint);
 
             //Serialization with Xstream  (object to xml)
-            XStream xstream = new XStream();
-            xstream.toXML(student, new FileWriter("studentxml.xml"));
+            String studentSer = xstream.toXML(student);
 
+            //Deserialization
+            xstream.fromXML(studentSer);
+            System.out.println(studentSer);
 
         }catch (JsonMappingException e) {
             e.printStackTrace();
